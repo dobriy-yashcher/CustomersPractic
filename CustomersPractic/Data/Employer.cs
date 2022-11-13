@@ -16,5 +16,12 @@ namespace CustomersPractic.Data
         public IndustrialBranch IndustrialBranch { get; set; }
 
         public Employer() { }
+
+        public Employer(string login, string password, string email) : base (login, password, email)
+        {
+            Login = login;
+            Password = password;
+            Email = email;
+        }
     }
 }

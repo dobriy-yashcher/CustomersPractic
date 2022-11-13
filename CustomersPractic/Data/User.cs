@@ -1,8 +1,16 @@
 ﻿using MongoDB.Bson;
+using System.Data;
 
 namespace CustomersPractic.Data
 {
-    public abstract class User
+    public enum Roles
+    {
+        Employer,
+        Builder,
+        Designer
+    }
+
+    public class User
     {
         public ObjectId Id { get; set; }
 
@@ -15,5 +23,16 @@ namespace CustomersPractic.Data
         
         public string Email { get; set; }
         public string Phone { get; set; }
+
+        //public Roles Role { get; set; }
+
+        public User() { }
+
+        public User(string login, string password, string email)
+        {
+            Login = login;
+            Password = password;
+            Email = email;
+        }
     }
 }

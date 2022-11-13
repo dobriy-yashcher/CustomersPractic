@@ -13,5 +13,12 @@
         public string GeneralManager { get; set; }
 
         public Builder() { }
+
+        public Builder(string login, string password, string email) : base(login, password, email)
+        {
+            Login = login;
+            Password = password;
+            Email = email;
+        }
     }
 }

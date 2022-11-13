@@ -14,5 +14,12 @@
         public string GeneralDesigner { get; set; }
 
         public Designer() { }
+
+        public Designer(string login, string password, string email) : base(login, password, email)
+        {
+            Login = login;
+            Password = password;
+            Email = email;
+        }
     }
 }

@@ -1,6 +1,8 @@
-﻿@inherits LayoutComponentBase
+﻿@inject NavigationManager nManager
+@inherits LayoutComponentBase
+@inject CustomersPractic.Services.UserService userService
 
-<PageTitle>CustomersPractic</PageTitle>
+<PageTitle>Customers Practic</PageTitle>
 
 <div class="page">
     <div class="sidebar">
@@ -8,12 +10,34 @@
     </div>
 
     <main>
-        <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-        </div>
+        @if (userService.currentUser is null)
+        {
+            <div class="top-row px-4">
+                <NavLink class="nav-link" href="regPage">
+                <span aria-hidden="true"></span> Sign Up
+                </NavLink>
+                <NavLink class="nav-link" href="authoPage" >
+                    <span aria-hidden="true"></span> Log In
+                </NavLink>
+            </div>
+        }
+
+        else 
+        {
+            <div class="top-row px-4">
+                <NavLink class="nav-link" href="regPage" @onclick="() => Exit()">
+                    <span aria-hidden="true"></span> Exit
+                </NavLink>
+            </div>
+        }
 
         <article class="content px-4">
-            @Body
+            @Body 
         </article>
     </main>
 </div>
+
+@code
+{
+    private void Exit() => userService.currentUser = null;
+}
